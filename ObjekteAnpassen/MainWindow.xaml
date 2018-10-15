@@ -4,8 +4,74 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             Title="Objekte Anpassen"
+             d:DesignHeight="700" d:DesignWidth="800" 
+             WindowState="Maximized" 
+             Name="EBMainWindow">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Auswahl">
+                <ListView Name="lwAuswahl" ItemsSource="{Binding ElementName=EBMainWindow, Path=ObjektAnsicht}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Anw">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Name="Cb_Item" IsChecked="{Binding Checked}"></CheckBox>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Bezeichnung" DisplayMemberBinding="{Binding ObjIt.Name}"></GridViewColumn>
+                            <GridViewColumn Header="Kommentar" DisplayMemberBinding="{Binding ObjIt.Kommentar}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </GroupBox>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="13*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Name="BtAssocAuswahl" Margin="5" Click="BtAssocAuswahl_Click">Assoz. Objekte in Auswahl laden</Button>
+                <GroupBox Header="Attribut Hinzufügen" Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <GroupBox Header="AttributeID">
+                            <TextBox Name="TbAttrID"></TextBox>
+                        </GroupBox>
+                        <GroupBox Header="Attribut Wert" Grid.Row="1">
+                            <TextBox Name="TbAttrWert"></TextBox>
+                        </GroupBox>
+                        <Button Grid.Row="2" Margin="5" Name="BtAttrHinzuf" Click="BtAttrHinzuf_Click">Attribute Auswahl ändern (AutoAdd)</Button>
+                    </Grid>
+                </GroupBox>
+                <Button Grid.Row="2" Margin="5" Click="BtAssocKablDeep_Click">Alle Kabel Associationen (Kinder Deep) Laden</Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="2" Margin="5" Name="btBeenden" Click="btBeenden_Click">
+                Beenden
+            </Button>
+        </Grid>
     </Grid>
 </Window>

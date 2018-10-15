@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -11,8 +11,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ObjekteAnpassen</RootNamespace>
     <AssemblyName>ObjekteAnpassen</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aucotec.EngineeringBase.Client.Runtime.v1.0, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6d4e536fc230a61a, processorArchitecture=MSIL">
@@ -37,11 +40,15 @@
       <HintPath>C:\Program Files (x86)\Aucotec\Engineering Base 681\DotNet\Pipeline\AddInViews\Aucotec.EngineeringBase.Client.Runtime.v1.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="EBObjektLibary4">
+      <HintPath>..\..\EBObjektLibary4\EBObjektLibary4\bin\Debug\EBObjektLibary4.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.AddIn" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,6 +75,7 @@
       <FlavorProperties GUID="{1F37CB63-53FE-464D-B0DC-9F18C71508FB}">
         <ClientPlugInProject>
           <EBDeploymentVersion>6.8.1</EBDeploymentVersion>
+          <PlugInAssemblyIdentifier>2a25e3df-25e6-4090-a17e-d91b55519aa1</PlugInAssemblyIdentifier>
         </ClientPlugInProject>
       </FlavorProperties>
       <FlavorProperties GUID="{1F37CB63-53FE-464D-B0DC-9F18C71508FB}" Configuration="Debug|Any CPU">

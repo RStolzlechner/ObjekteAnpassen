@@ -21,16 +21,29 @@ namespace ObjekteAnpassen
         /// <param name="myApplication">Application object instance</param>	
         public override void Run(Application myApplication)
         {
-            MainWindow frm = new MainWindow();
-            frm.DataContext = myApplication.RootObject;
+            try
+            {
+                MainWindow frm = new MainWindow(myApplication.Selection.FirstOrDefault(), myApplication);
+                frm.DataContext = myApplication.RootObject;
 
-            WindowInteropHelper wih = new WindowInteropHelper(frm);
-            wih.Owner = myApplication.ActiveWindow.Handle;
-            frm.ShowDialog();
+                WindowInteropHelper wih = new WindowInteropHelper(frm);
+                wih.Owner = myApplication.ActiveWindow.Handle;
+                frm.ShowDialog();
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.ToString(), "Fehler");
+            }
+            finally
+            {
+                GC.Collect();
 
-            // Make a synchronously shutdown
-            if (!AppDomain.CurrentDomain.IsDefaultAppDomain())
-                Dispatcher.CurrentDispatcher.InvokeShutdown();
+                myApplication.Utils.UnloadCache();
+
+                // Make a synchronously shutdown
+                if (!AppDomain.CurrentDomain.IsDefaultAppDomain())
+                    Dispatcher.CurrentDispatcher.InvokeShutdown();
+            }
         }
     }
 }
